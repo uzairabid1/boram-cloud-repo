@@ -81,7 +81,7 @@ def appendProduct(file_path2, data):
 # Input paths here
 logging.basicConfig(filename='script.log', level=logging.INFO)
 logging.info('Script started.')
-df = pd.read_excel('Consolidated_File2.xlsx')
+df = pd.read_excel('list_02_Mar17.xlsx')
 
 
 # Let's make it easy for you, if you wish to change just put here
