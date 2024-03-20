@@ -1,0 +1,7 @@
+selenium
+webdriver_manager
+openpyxl
+pandas
+requests
+bs4
+geopy
