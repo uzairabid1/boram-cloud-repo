@@ -3,11 +3,11 @@
 while true; do
     python naver.py  
 
-    if [ -f "naver_copy_sample.csv" ]; then
-        tail -n 1 naver_copy_sample.csv | sed -i '$ d' naver_copy_sample.csv
-        echo "Removed the last line from 'naver_copy_sample.csv'"
+    if [ -f "output_list10.csv" ]; then
+        tail -n 1 output_list10.csv | sed -i '$ d' output_list10.csv
+        echo "Removed the last line from 'output_list10.csv'"
     else
-        echo "'naver_copy_sample.csv' not found. Continuing without removing the last line."
+        echo "'output_list10.csv' not found. Continuing without removing the last line."
     fi
     
     echo "Script stopped. Restarting in 10 seconds..."
