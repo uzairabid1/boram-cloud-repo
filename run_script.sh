@@ -1,7 +1,7 @@
 #!/bin/bash
 
 while true; do
-    python naver.py  
+    python3 naver.py  
 
     if [ -f "output_list4.csv" ]; then
         tail -n 1 output_list4.csv | sed -i '$ d' output_list4.csv
