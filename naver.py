@@ -758,10 +758,10 @@ for idx, value in enumerate(search_query_values):
                         driver.execute_script("window.open('');")
                         driver.switch_to.window(driver.window_handles[1])
                         driver.get(visitor_review)
-                        time.sleep(2)
+                        time.sleep(3)
                         review_type = "Visitor Review"
                         try:
-                            check_skip = driver.find_element(By.XPATH,"//h2[text()='리뷰']/span[@class='place_section_count']")
+                            check_skip = driver.find_element(By.XPATH,"//h2[text()='리뷰']/em[@class='place_section_count']")
                         except:
                             driver.close()
                             driver.switch_to.window(driver.window_handles[0])
