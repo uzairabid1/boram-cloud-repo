@@ -251,7 +251,7 @@ for idx, value in enumerate(search_query_values):
                     time.sleep(2)
                     review_type = "Visitor Review"
                     try:
-                        check_skip = driver.find_element(By.XPATH,"//h2[text()='리뷰']/em[@class='place_section_count']")
+                        check_skip = driver.find_element(By.XPATH,"//h2[text()='리뷰']/span[@class='place_section_count']")
                     except:
                         driver.close()
                         driver.switch_to.window(driver.window_handles[0])
@@ -303,7 +303,7 @@ for idx, value in enumerate(search_query_values):
                         try:
                                 reviewer_id2 = driver.find_element(By.XPATH,f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[1]/a").get_attribute('href').split('/')[4]
                         except:
-                                review_id2 = "NA"
+                                reviewer_id2 = "NA"
 
                         try:
                             review_written = driver.find_element(By.XPATH,
