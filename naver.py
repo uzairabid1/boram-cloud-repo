@@ -43,7 +43,7 @@ from itertools import product
 # driver = webdriver.Chrome(service=Service) # --> run this code once then deactiuvate it like shift + #
 options = webdriver.ChromeOptions() 
 options.add_argument('--disable-dev-shm-usage')
-options.add_argument('--headless=new')
+# options.add_argument('--headless=new')
 options.add_argument("--no-sandbox")
 options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
 options.add_argument("--window-size=1920x1080")
@@ -303,7 +303,7 @@ for idx, value in enumerate(search_query_values):
                         try:
                                 reviewer_id2 = driver.find_element(By.XPATH,f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[1]/a").get_attribute('href').split('/')[4]
                         except:
-                                review_id2 = "NA"
+                                reviewer_id2 = "NA"
 
                         try:
                             review_written = driver.find_element(By.XPATH,
