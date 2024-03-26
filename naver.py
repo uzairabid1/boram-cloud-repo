@@ -303,7 +303,7 @@ for idx, value in enumerate(search_query_values):
                         try:
                                 reviewer_id2 = driver.find_element(By.XPATH,f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[1]/a").get_attribute('href').split('/')[4]
                         except:
-                                review_id2 = "NA"
+                                reviewer_id2 = "NA"
 
                         try:
                             review_written = driver.find_element(By.XPATH,
