@@ -270,7 +270,7 @@ for idx, value in enumerate(search_query_values):
                         if total_reviews >= 9000:
                             for count_review in range(0,900):
                                 try:
-                                    see_more_btn = driver.find_element(By.XPATH, "(//span[.='더보기'])[2]/parent::a").click()
+                                    see_more_btn = driver.find_element(By.XPATH, "(//span[.='더보기'])[1]/parent::a").click()
                                     time.sleep(0.5)
                                 except:
                                     stop_flag = False
@@ -279,7 +279,7 @@ for idx, value in enumerate(search_query_values):
                         else:
                             while stop_flag:
                                 try:
-                                    see_more_btn = driver.find_element(By.XPATH, "(//span[.='더보기'])[2]/parent::a").click()
+                                    see_more_btn = driver.find_element(By.XPATH, "(//span[.='더보기'])[1]/parent::a").click()
                                     time.sleep(0.5)
                                 except:
                                     stop_flag = False
@@ -289,31 +289,31 @@ for idx, value in enumerate(search_query_values):
 
                     list_reviews = []
                     time.sleep(1)
-                    list_reviews_xp = driver.find_elements(By.XPATH, "//li[@class='YeINN']")
+                    list_reviews_xp = driver.find_elements(By.XPATH, "//li[@class='owAeM']")
                     for list_review_xp in list_reviews_xp:
                         list_reviews.append(list_review_xp)
                     print(len(list_reviews))
                     for rev_idx in range(0, len(list_reviews)):
                         try:
                             reviewer_id = driver.find_element(By.XPATH,
-                                                              f"(//li[@class='YeINN'])[{rev_idx + 1}]/div/a[2]/div[1]").text.strip()
+                                                              f"(//li[@class='owAeM'])[{rev_idx + 1}]/div/div/a[2]/div[1]/span").text.strip()
                         except:
                             reviewer_id = "NA"
 
                         try:
-                                reviewer_id2 = driver.find_element(By.XPATH,f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[1]/a").get_attribute('href').split('/')[4]
+                                reviewer_id2 = driver.find_element(By.XPATH,f"(//li[@class='owAeM'])[{rev_idx + 1}]/div/div[1]/a[1]").get_attribute('href').split('/')[4]
                         except:
                                 reviewer_id2 = "NA"
 
                         try:
                             review_written = driver.find_element(By.XPATH,
-                                                                 f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[@class='ZZ4OK IwhtZ']").text.strip()
+                                                                 f"(//li[@class='owAeM'])[{rev_idx + 1}]/div[1]/div[@class='vg7Fp CyA_N']").text.strip()
                         except:
                             review_written = "NA"
 
                         try:
                             review_selected = driver.find_element(By.XPATH,
-                                                                  f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[@class='gyAGI']/span[1]").text.strip()
+                                                                  f"(//li[@class='owAeM'])[{rev_idx + 1}]/div[1]/div[@class='ERkm0']/span").text.strip()
                         except:
                             review_selected = 'NA'
 
@@ -339,16 +339,16 @@ for idx, value in enumerate(search_query_values):
                         try:
                             try:
                                 review_time_str = driver.find_element(By.XPATH,
-                                                                      f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[last()-1]/div/div/span/time").text.strip().replace(
+                                                                      f"(//li[@class='owAeM'])[{rev_idx + 1}]/div/div[last()]/div[2]/span/time").text.strip().replace(
                                     '목', '')
                             except:
                                 try:
                                     review_time_str = driver.find_element(By.XPATH,
-                                                                          f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[last()]/div[last()]/span/time").text.strip().replace(
+                                                                          f"(//li[@class='owAeM'])[{rev_idx + 1}]/div[last()]/div[last()]/span/time").text.strip().replace(
                                         '목', '')
                                 except:
                                     review_time_str = driver.find_element(By.XPATH,
-                                                                          f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[last()]/div/div[2]/span[1]/time").text.strip().replace(
+                                                                          f"(//li[@class='owAeM'])[{rev_idx + 1}]/div[last()]/div/div[2]/span[1]/time").text.strip().replace(
                                         '목', '')
                             matches = re.findall(pattern, review_time_str)
                             if matches:
@@ -362,7 +362,7 @@ for idx, value in enumerate(search_query_values):
                             review_time = "NA"
                         try:
                             nth_visit = driver.find_element(By.XPATH,
-                                                            f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[last()-1]/div[last()]/span[2]").text.strip()
+                                                            f"(//li[@class='owAeM'])[{rev_idx + 1}]/div/div[last()]/div[last()]/span[2]").text.strip()
                         except:
                             try:
                                 nth_visit = driver.find_element(By.XPATH,
@@ -378,7 +378,7 @@ for idx, value in enumerate(search_query_values):
                         try:
 
                             proof_method = driver.find_element(By.XPATH,
-                                                               f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[last()-1]/div[last()]/span[3]").text.strip()
+                                                               f"(//li[@class='owAeM'])[{rev_idx + 1}]/div/div[last()]/div[last()]/span[3]").text.strip()
 
                         except:
                             try:
@@ -587,7 +587,7 @@ for idx, value in enumerate(search_query_values):
                                 "Review_position": blog_review_pos,
                                 "Review_Type": review_type2,
                                 "Reviewer_ID": reviewer_id,
-                                "Reviewer_ID2": reviewer_id2,
+                                "Reviewer_ID2": '',
                                 "Review_written": review_written,
                                 "# Reviews_selected": "NA",
                                 "Review_selected": "NA",
@@ -595,7 +595,7 @@ for idx, value in enumerate(search_query_values):
                                 "Review_Time": review_time,
                                 "Nth_visit": "NA",
                                 "Proof method": proof_method,
-                                "Rating": rating,
+                                "Rating": 'NA',
                                 "Visit_Day": 'NA',
                             }
                             print(data)
@@ -782,7 +782,7 @@ for idx, value in enumerate(search_query_values):
                                 logging.info("inside 9000")
                                 for count_review in range(0,900):
                                     try:
-                                        see_more_btn = driver.find_element(By.XPATH, "(//span[.='더보기'])[2]/parent::a").click()
+                                        see_more_btn = driver.find_element(By.XPATH, "(//span[.='더보기'])[1]/parent::a").click()
                                         time.sleep(0.5)
                                     except:
                                         stop_flag = False
@@ -791,7 +791,7 @@ for idx, value in enumerate(search_query_values):
                             else:
                                 while stop_flag:
                                     try:
-                                        see_more_btn = driver.find_element(By.XPATH, "(//span[.='더보기'])[2]/parent::a").click()
+                                        see_more_btn = driver.find_element(By.XPATH, "(//span[.='더보기'])[1]/parent::a").click()
                                         time.sleep(0.5)
                                     except:
                                         stop_flag = False
@@ -806,7 +806,7 @@ for idx, value in enumerate(search_query_values):
                                 stop_flag = True
                                 while stop_flag:
                                     try:
-                                        see_more_btn = driver.find_element(By.XPATH, "(//span[.='더보기'])[2]/parent::a").click()
+                                        see_more_btn = driver.find_element(By.XPATH, "(//span[.='더보기'])[1]/parent::a").click()
                                         time.sleep(0.5)
                                     except:
                                         stop_flag = False
@@ -816,7 +816,7 @@ for idx, value in enumerate(search_query_values):
 
                         list_reviews = []
                         time.sleep(1)
-                        list_reviews_xp = driver.find_elements(By.XPATH, "//li[@class='YeINN']")
+                        list_reviews_xp = driver.find_elements(By.XPATH, "//li[@class='owAeM']")
                         for list_review_xp in list_reviews_xp:
                             list_reviews.append(list_review_xp)
                         print(len(list_reviews))
@@ -829,24 +829,24 @@ for idx, value in enumerate(search_query_values):
                            
                             try:
                                 reviewer_id = driver.find_element(By.XPATH,
-                                                                f"(//li[@class='YeINN'])[{rev_idx + 1}]/div/a[2]/div[1]").text.strip()
+                                                                f"(//li[@class='owAeM'])[{rev_idx + 1}]/div/div/a[2]/div[1]/span").text.strip()
                             except:
                                 reviewer_id = "NA"
 
                             try:
-                                reviewer_id2 = driver.find_element(By.XPATH,f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[1]/a").get_attribute('href').split('/')[4]
+                                reviewer_id2 = driver.find_element(By.XPATH,f"(//li[@class='owAeM'])[{rev_idx + 1}]/div/div[1]/a[1]").get_attribute('href').split('/')[4]
                             except:
                                 reviewer_id2 = "NA"
                             
                             try:
                                 review_written = driver.find_element(By.XPATH,
-                                                                    f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[@class='ZZ4OK IwhtZ']").text.strip()
+                                                                    f"(//li[@class='owAeM'])[{rev_idx + 1}]/div[1]/div[@class='vg7Fp CyA_N']").text.strip()
                             except:
                                 review_written = "NA"
 
                             try:
                                 review_selected = driver.find_element(By.XPATH,
-                                                                    f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[@class='gyAGI']/span[1]").text.strip()
+                                                                    f"(//li[@class='owAeM'])[{rev_idx + 1}]/div[1]/div[@class='ERkm0']/span").text.strip()
                             except:
                                 review_selected = 'NA'
 
@@ -872,7 +872,7 @@ for idx, value in enumerate(search_query_values):
                             try:
                                 try:
                                     review_time_str = driver.find_element(By.XPATH,
-                                                                        f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[last()-1]/div/div/span/time").text.strip().replace(
+                                                                        f"(//li[@class='owAeM'])[{rev_idx + 1}]/div/div[last()]/div[2]/span/time").text.strip().replace(
                                         '목', '')
                                 except:
                                     try:
@@ -896,7 +896,7 @@ for idx, value in enumerate(search_query_values):
 
                             try:
                                 nth_visit = driver.find_element(By.XPATH,
-                                                                f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[last()-1]/div[last()]/span[2]").text.strip()
+                                                                f"(//li[@class='owAeM'])[{rev_idx + 1}]/div/div[last()]/div[last()]/span[2]").text.strip()
                             except:
                                 try:
                                     nth_visit = driver.find_element(By.XPATH,
@@ -911,7 +911,7 @@ for idx, value in enumerate(search_query_values):
 
                             try:
                                 proof_method = driver.find_element(By.XPATH,
-                                                                f"(//li[@class='YeINN'])[{rev_idx + 1}]/div[last()-1]/div[last()]/span[3]").text.strip()
+                                                                f"(//li[@class='owAeM'])[{rev_idx + 1}]/div/div[last()]/div[last()]/span[3]").text.strip()
 
                             except:
                                 try:
@@ -1135,7 +1135,7 @@ for idx, value in enumerate(search_query_values):
                                     "Review_position": blog_review_pos,
                                     "Review_Type": review_type2,
                                     "Reviewer_ID": reviewer_id,
-                                    "Reviewer_ID2": reviewer_id2,                                    
+                                    "Reviewer_ID2": '',                                    
                                     "Review_written": review_written,
                                     "# Reviews_selected": "NA",
                                     "Review_selected": "NA",
@@ -1143,7 +1143,7 @@ for idx, value in enumerate(search_query_values):
                                     "Review_Time": review_time,
                                     "Nth_visit": "NA",
                                     "Proof method": proof_method,
-                                    "Rating": rating,
+                                    "Rating": "NA",
                                     "Visit_Day": 'NA',                                    
                                 }
                                 print(data)
